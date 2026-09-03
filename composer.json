@@ -7,5 +7,10 @@
   },
   "extra": {
     "wordpress-install-dir": "public"
+  },
+  "config": {
+    "allow-plugins": {
+      "johnpbloch/wordpress-core-installer": true
+    }
   }
 }
