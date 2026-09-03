@@ -1,0 +1,11 @@
+{
+  "name": "dima/wordpress-deep-dive-2026",
+  "type": "project",
+  "require": {
+    "php": "^8.4",
+    "johnpbloch/wordpress": "^6.9"
+  },
+  "extra": {
+    "wordpress-install-dir": "public"
+  }
+}
