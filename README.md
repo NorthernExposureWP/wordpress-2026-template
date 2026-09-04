@@ -14,3 +14,8 @@ docker compose exec -e XDEBUG_MODE=off php composer install
 ## 6. Verify installation
 docker compose exec -e XDEBUG_MODE=off php wp core is-installed --allow-root
 (Expected result: 0)
+
+## Fix file ownership
+If files inside `public/` were created by the Docker container and are not writable
+by your host user, run:
+sudo chown -R $USER:$USER public/
