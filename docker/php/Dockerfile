@@ -7,6 +7,7 @@ RUN docker-php-ext-install \
 RUN apt-get update && apt-get install -y \
         unzip \
         libzip-dev \
+        default-mysql-client \
     && docker-php-ext-install zip \
     && rm -rf /var/lib/apt/lists/*
 
@@ -20,4 +21,7 @@ RUN a2enmod rewrite
 
 RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' \
     /etc/apache2/sites-available/*.conf
+
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
 

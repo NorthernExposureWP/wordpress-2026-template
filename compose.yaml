@@ -4,8 +4,11 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     container_name: wordpress_php
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - .:/var/www/html
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
     ports:
       - "8080:80"
     depends_on:
