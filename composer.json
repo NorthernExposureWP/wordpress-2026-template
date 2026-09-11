@@ -3,7 +3,7 @@
   "type": "project",
   "require": {
     "php": "^8.4",
-    "johnpbloch/wordpress": "^6.9"
+    "johnpbloch/wordpress": "^7.1"
   },
   "extra": {
     "wordpress-install-dir": "public"
