@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker compose exec \
+    -u www-data \
+    -e XDEBUG_MODE=off \
+    -w /var/www/html/public \
+    php wp "$@"
