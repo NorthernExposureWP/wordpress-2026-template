@@ -18,7 +18,23 @@ docker compose up -d --build
 docker compose exec -e XDEBUG_MODE=off php composer install
 ```
 
-## 4. Configure Composer autoload
+## 4. Install WordPress
+
+Follow the WordPress installation in the browser:
+
+```text
+http://localhost:8080
+```
+
+## 5. Fix file ownership
+
+If files inside `public/` were created by the Docker container and are not writable by your host user:
+
+```bash
+sudo chown -R $USER:$USER public/
+```
+
+## 6. Configure Composer autoload
 
 Add to `public/wp-config.php`:
 
@@ -28,15 +44,8 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 This loads the project-level Composer autoloader before WordPress loads plugins.
 
-## 5. Install WordPress
 
-Follow the WordPress installation in the browser:
-
-```text
-http://localhost:8080
-```
-
-## 6. Verify installation
+## 7. Verify installation
 
 ```bash
 docker compose exec -e XDEBUG_MODE=off php wp core is-installed --allow-root
@@ -48,13 +57,7 @@ Expected result:
 0
 ```
 
-## 7. Fix file ownership
 
-If files inside `public/` were created by the Docker container and are not writable by your host user:
-
-```bash
-sudo chown -R $USER:$USER public/
-```
 
 ## WP-CLI
 
@@ -75,3 +78,9 @@ docker compose exec -e XDEBUG_MODE=off php composer dump-autoload
 ```
 
 Custom plugins use the project-level Composer autoloader and must not contain their own `composer.json` or `vendor/` directory.
+
+## Possible issues
+If you encounter an issue with uploading images in admin panel, uncomment volume mapping in compose.yaml and repeat:
+```bash
+docker compose up -d --build
+```
