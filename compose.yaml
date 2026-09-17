@@ -3,7 +3,6 @@ services:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
-    container_name: wordpress_php
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
@@ -17,7 +16,6 @@ services:
 
   mysql:
     image: mysql:9
-    container_name: wordpress_mysql
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -28,4 +26,4 @@ services:
 
 volumes:
   mysql_data:
-  #wordpress_uploads:
+  # wordpress_uploads:
