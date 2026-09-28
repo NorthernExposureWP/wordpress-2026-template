@@ -27,6 +27,6 @@
     "ext-json": "*"
   },
   "provide": {
-    "wordpress/core-implementation": "7.1.0"
+    "wordpress/core-implementation": "7.1.2"
   }
 }
